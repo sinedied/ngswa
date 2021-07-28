@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - run: npm i -g npm@latest
       - uses: actions/checkout@v2
         with:
           submodules: true
+      - run: npm i -g npm@latest
+        env:
+          CI: true
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
